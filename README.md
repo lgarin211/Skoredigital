@@ -1,2 +1,0 @@
-# Skoredigital
-Scorepencaksilat digital
