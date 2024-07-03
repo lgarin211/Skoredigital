@@ -230,7 +230,7 @@ $iter = 0;
 								console.log('Request ... Done');
 							}
 						});
-					}, 10000);
+					}, 20000);
 				}, 10000);
 			</script>
 		</div>
@@ -251,9 +251,9 @@ $iter = 0;
 					<div class="modal-body">
 						<dov class="row justify-content-center">
 							<?php if ($i == count($datpertandingn)) { ?>
-								<div class="col-sm-12" style="background-color: red;">
+								<div class="col-sm-12" style="background-color: red; height: 30dvh;">
 								<?php } else { ?>
-									<div class="col-sm-6" style="background-color: red;">
+									<div class="col-sm-6" style="background-color: red; height: 30dvh;">
 									<?php } ?>
 									<td>
 										<table width="343" height="28" border="0">
@@ -304,7 +304,7 @@ $iter = 0;
 									<?php
 									if ($i !== count($datpertandingn)) {
 									?>
-										<div class="col-sm-6" style="background-color: blue;">
+										<div class="col-sm-6" style="background-color: blue;height: 30dvh;">
 											<td>
 												<table width="343" height="28" border="0">
 													<tbody>
