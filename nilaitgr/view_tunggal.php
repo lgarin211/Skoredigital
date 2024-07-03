@@ -1,10 +1,5 @@
 <?php
 include "../backend/includes/connection.php";
-$avgKB = 0;
-$avgKM = 0;
-$avgHukuman = 0;
-$datpertandingn = [];
-$iter = 0;
 ?>
 <html>
 
@@ -36,6 +31,14 @@ $iter = 0;
 
 		<div id="jadwaltunggal" class="table-responsive">
 			<table class="table table-bordered">
+				<?php
+				include "../backend/includes/connection.php";
+				$avgKB = 0;
+				$avgKM = 0;
+				$avgHukuman = 0;
+				$datpertandingn = [];
+				$iter = 0;
+				?>
 				<tr class="text-center" bgcolor="#FFFF00">
 					<td width="28" rowspan="2">NO</td>
 					<td width="32" rowspan="2">GOL</td>
@@ -62,6 +65,9 @@ $iter = 0;
 				?>
 				<?php while ($jadwal = mysqli_fetch_array($jadwal_tunggal)) {
 					try { ?>
+
+
+
 						<tr class="text-center">
 							<td><?php echo $jadwal['noundian']; ?></td>
 							<td><?php echo $jadwal['golongan']; ?></td>
@@ -77,11 +83,13 @@ $iter = 0;
 									$kebenaran = mysqli_query($koneksi, "SELECT * FROM nilai_tunggal WHERE id_juri=" . $juri['id_juri'] . " AND id_jadwal=" . $jadwal['id_partai']);
 									$row = mysqli_fetch_row($kebenaran);
 									$kebenaran = 0.1 * ($row[3] + $row[4] + $row[5] + $row[6] + $row[7] + $row[8] + $row[9] + $row[10] + $row[11] + $row[12] + $row[13] + $row[14] + $row[15] + $row[16] - 1);
-
-									if ($kebenaran != 0) {
+									$kemantapan = mysqli_query($koneksi, "SELECT kemantapan FROM nilai_tunggal WHERE id_juri=" . $juri['id_juri'] . " AND id_jadwal=" . $jadwal['id_partai']);
+									$row2 = mysqli_fetch_row($kemantapan);
+									if (abs($kebenaran) + abs($row2[0]) == 0.1) {
+										$kebenaran = 0;
+									} else if ($kebenaran != 0) {
 										$kebenaran = 10 - (-$kebenaran);
 									}
-
 									$array_nilai[$juri['id_juri']]['kebenaran'] = $kebenaran;
 								?>
 									<?= $juri[1] ?> : <?= empty($kebenaran) ? 0 : $kebenaran ?><br />
@@ -127,7 +135,6 @@ $iter = 0;
 
 								while ($juri = mysqli_fetch_array($exec)) {
 
-
 									if (isset($array_nilai[$juri['id_juri']]['kebenaran'])) {
 										$nilai = ($array_nilai[$juri['id_juri']]['kebenaran'] + $array_nilai[$juri['id_juri']]['kemantapan']) - (-$array_nilai[$juri['id_juri']]['hukuman']);
 										$tempNilai[] = $nilai;
@@ -147,7 +154,6 @@ $iter = 0;
 								$loter += $alter[$i] = $array_nilai[$i]['kebenaran'] + $array_nilai[$i]['kemantapan'] - $array_nilai[$i]['hukuman'];
 							}
 							$totalNilai = ($loter - min($alter) - max($alter)) / 3;
-
 							$datpertandingn[$iterasi]["totalNilai"] = $totalNilai;
 							$iterasi++;
 							?>
@@ -207,28 +213,6 @@ $iter = 0;
 					</td>
 				</tr>
 			</table>
-
-			<script type="text/javascript">
-				setInterval(() => {
-					window.location.reload();
-
-					setInterval(function() {
-
-						$.ajax({
-							url: 'http://localhost/skordigital/juritgr/api.php',
-							data: {
-								'a': 'get_data_view_tunggal'
-							},
-							type: "GET",
-							success: function(obj) {
-								$('#jadwaltunggal').html(obj);
-
-								console.log('Request ... Done');
-							}
-						});
-					}, 20000);
-				}, 10000);
-			</script>
 		</div>
 	</div>
 
@@ -284,7 +268,7 @@ $iter = 0;
 													<tr>
 														<td height="79">
 															<div align="center" style="background-color:#FFFF00"><strong>
-																	<font size="10">
+																	<font size="10" class="spcd<?= $i - 1 ?>">
 
 																		<?= number_format($datpertandingn[$i - 1]["totalNilai"], 2) ?>
 
@@ -334,7 +318,7 @@ $iter = 0;
 															<tr>
 																<td height="79">
 																	<div align="center" style="background-color:#FFFF00"><strong>
-																			<font size="10">
+																			<font size="10" class="spcd<?= $i ?>">
 																				<?= number_format($datpertandingn[$i]["totalNilai"], 2) ?>
 																			</font>
 																		</strong></div>
@@ -348,7 +332,7 @@ $iter = 0;
 									<?php } ?>
 						</dov>
 					</div>
-					<div class="modal-footer">
+					<div class=" modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					</div>
 				</div>
@@ -356,7 +340,34 @@ $iter = 0;
 		</div>
 	<?php } ?>
 
+	<script type="text/javascript">
+		setInterval(function() {
 
+			$.ajax({
+				url: 'http://localhost/skordigital/nilaitgr/handel.php',
+				data: {
+					'a': 'get_data_view_tunggal'
+				},
+				type: "GET",
+				success: function(obj) {
+					$('#jadwaltunggal').html(obj);
+					console.log('Request ... Done');
+				}
+			});
+
+			setTimeout(() => {
+				var letbest = <?= $iter ?>;
+				for (let i = 0; i < letbest; i++) {
+					var ivi = document.getElementsByClassName('spcd' + i);
+					for (let j = 0; j < ivi.length; j++) {
+						ivi[j].innerHTML = document.getElementById('toss' + i).innerHTML;
+					}
+
+				}
+				console.log("reviewed")
+			}, 1000);
+		}, 2000);
+	</script>
 </body>
 
 </html>
