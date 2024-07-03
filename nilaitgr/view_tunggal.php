@@ -209,19 +209,24 @@ $datpertandingn = [];
 			</table>
 
 			<script type="text/javascript">
-				setInterval(function() {
-					$.ajax({
-						url: 'http://localhost/skordigital/juritgr/api.php',
-						data: {
-							'a': 'get_data_view_tunggal'
-						},
-						type: "GET",
-						success: function(obj) {
-							$('#jadwaltunggal').html(obj);
+				setInterval(() => {
+					window.location.reload();
 
-							console.log('Request ... Done');
-						}
-					});
+					setInterval(function() {
+
+						$.ajax({
+							url: 'http://localhost/skordigital/juritgr/api.php',
+							data: {
+								'a': 'get_data_view_tunggal'
+							},
+							type: "GET",
+							success: function(obj) {
+								$('#jadwaltunggal').html(obj);
+
+								console.log('Request ... Done');
+							}
+						});
+					}, 10000);
 				}, 5000);
 			</script>
 		</div>
