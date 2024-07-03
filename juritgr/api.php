@@ -607,17 +607,17 @@ if ("" != $param) {
 			$exec = mysqli_query($koneksi, $sql);
 
 			$row = mysqli_fetch_row($exec);
-
+			$start = 0.1;
 			if ($row) {
-				if ($row[0] != 60) {
+				if ($row[0] != 1) {
 					if ($row[0] == 0) {
-						$sql = "UPDATE nilai_tunggal set kemantapan=50 WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set kemantapan={$start} WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 						mysqli_query($koneksi, $sql);
-						$kemantapan = 50;
+						$kemantapan = $start;
 					} else {
-						$sql = "UPDATE nilai_tunggal set kemantapan=kemantapan+1 WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set kemantapan=kemantapan+{$start} WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 						mysqli_query($koneksi, $sql);
-						$kemantapan = $row[0] + 1;
+						$kemantapan = $row[0] + $start;
 					}
 				} else {
 					$kemantapan = $row[0];
@@ -634,17 +634,17 @@ if ("" != $param) {
 			$exec = mysqli_query($koneksi, $sql);
 
 			$row = mysqli_fetch_row($exec);
-
+			$start = -0.1;
 			if ($row) {
-				if ($row[0] != 50) {
+				if ($row[0] >= 0.1) {
 					if ($row[0] == 0) {
-						$sql = "UPDATE nilai_tunggal set kemantapan=50 WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set kemantapan={$start} WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 						mysqli_query($koneksi, $sql);
-						$kemantapan = 50;
+						$kemantapan = $start;
 					} else {
-						$sql = "UPDATE nilai_tunggal set kemantapan=kemantapan - 1 WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set kemantapan=kemantapan + {$start} WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 						mysqli_query($koneksi, $sql);
-						$kemantapan = $row[0] - 1;
+						$kemantapan = $row[0] + $start;
 					}
 				} else {
 					$kemantapan = $row[0];

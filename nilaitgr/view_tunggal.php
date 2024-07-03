@@ -1,5 +1,9 @@
 <?php
 include "../backend/includes/connection.php";
+$avgKB = 0;
+$avgKM = 0;
+$avgHukuman = 0;
+$datpertandingn = [];
 ?>
 <html>
 
@@ -53,6 +57,7 @@ include "../backend/includes/connection.php";
 					WHERE kategori='Tunggal'
 					ORDER BY id_partai,golongan ASC";
 				$jadwal_tunggal = mysqli_query($koneksi, $sqljadwal);
+				$iterasi = 0;
 				?>
 				<?php while ($jadwal = mysqli_fetch_array($jadwal_tunggal)) { ?>
 					<tr class="text-center">
@@ -62,19 +67,14 @@ include "../backend/includes/connection.php";
 						<td><?php echo $jadwal['kontingen']; ?></td>
 						<td>
 							<?php
+							$datpertandingn[$iterasi]["nama"] = $jadwal['nama'];
 							$sql = "SELECT * FROM wasit_juri";
-
 							$exec = mysqli_query($koneksi, $sql);
-
 							$array_nilai = [];
-
 							while ($juri = mysqli_fetch_array($exec)) {
-
-
 								$kebenaran = mysqli_query($koneksi, "SELECT * FROM nilai_tunggal WHERE id_juri=" . $juri['id_juri'] . " AND id_jadwal=" . $jadwal['id_partai']);
 								$row = mysqli_fetch_row($kebenaran);
-
-								$kebenaran = 0.1 * ($row[3] + $row[4] + $row[5] + $row[6] + $row[7] + $row[8] + $row[9] + $row[10] + $row[11] + $row[12] + $row[13] + $row[14] + $row[15] + $row[16]);
+								$kebenaran = 0.1 * ($row[3] + $row[4] + $row[5] + $row[6] + $row[7] + $row[8] + $row[9] + $row[10] + $row[11] + $row[12] + $row[13] + $row[14] + $row[15] + $row[16] - 1);
 
 								if ($kebenaran != 0) {
 									$kebenaran = 10 - (-$kebenaran);
@@ -93,8 +93,8 @@ include "../backend/includes/connection.php";
 							while ($juri = mysqli_fetch_array($exec)) {
 								$kemantapan = mysqli_query($koneksi, "SELECT kemantapan FROM nilai_tunggal WHERE id_juri=" . $juri['id_juri'] . " AND id_jadwal=" . $jadwal['id_partai']);
 								$row = mysqli_fetch_row($kemantapan);
-								$kemantapan = $row[0];
-
+								$kemantapan = $row[0] * 0.1;
+								// var_dump($kemantapan);
 								$array_nilai[$juri['id_juri']]['kemantapan'] = $kemantapan;
 							?>
 								<?= $juri[1] ?> : <?= empty($kemantapan) ? 0 : $kemantapan ?><br />
@@ -109,7 +109,7 @@ include "../backend/includes/connection.php";
 
 								$hukuman = mysqli_query($koneksi, "SELECT hukum_1,hukum_2,hukum_3,hukum_4,hukum_5 FROM nilai_tunggal WHERE id_juri=" . $juri['id_juri'] . " AND id_jadwal=" . $jadwal['id_partai']);
 								$row = mysqli_fetch_row($hukuman);
-								$hukuman = $row[0] + $row[1] + $row[2] + $row[3] + $row[4];
+								$hukuman = ($row[0] + $row[1] + $row[2] + $row[3] + $row[4]) * 0.1;
 								$array_nilai[$juri['id_juri']]['hukuman'] = $hukuman;
 							?>
 								<?= $juri[1] ?> : <?= empty($hukuman) ? 0 : $hukuman ?><br />
@@ -136,7 +136,24 @@ include "../backend/includes/connection.php";
 							?>
 								<?= $juri[1] ?> : <?= $nilai ?><br />
 							<?php } ?> </td>
-						<td>
+
+						<?php
+						// new logic 
+						for ($i = 1; $i <= 5; $i++) {
+							$avgKB += $array_nilai[$i]['kebenaran'];
+							$avgKM += $array_nilai[$i]['kemantapan'];
+							$avgHukuman += $array_nilai[$i]['hukuman'];
+						}
+						$avgKB = $avgKB / 5;
+						$avgKM = $avgKM / 5;
+						$avgHukuman = $avgHukuman / 5;
+
+						$totalNilai = ($avgKB + $avgKM) - $avgHukuman;
+
+						$datpertandingn[$iterasi]["totalNilai"] = $totalNilai;
+						$iterasi++;
+						?>
+						<td class="" data-toggle="modal" data-target="#exampleModal<?= $i % 2 + 2 ?>">
 							<table width="343" height="28" border="0">
 								<tr>
 									<th width="52" bgcolor="#663399" scope="row">
@@ -161,7 +178,7 @@ include "../backend/includes/connection.php";
 										<td height="79">
 											<div align="center" style="background-color:#FFFF00"><strong>
 													<font size="10">
-														<?= $totalNilai - ((min($tempNilai) + max($tempNilai))) ?>
+														<?= number_format($totalNilai, 2) ?>
 													</font>
 												</strong></div>
 										</td>
@@ -180,6 +197,8 @@ include "../backend/includes/connection.php";
 				} ?>
 			</table>
 		</div>
+
+
 		<div class="table-responsive">
 			<table class="table">
 				<tr>
@@ -190,23 +209,151 @@ include "../backend/includes/connection.php";
 			</table>
 
 			<script type="text/javascript">
-				setInterval(function() {
-					$.ajax({
-						url: 'https://demoskoredigital.garinpoin.com/juritgr/api.php',
-						data: {
-							'a': 'get_data_view_tunggal'
-						},
-						type: "GET",
-						success: function(obj) {
-							$('#jadwaltunggal').html(obj);
+				setInterval(() => {
+					window.location.reload();
 
-							console.log('Request ... Done');
-						}
-					});
-				}, 2000);
+					setInterval(function() {
+
+						$.ajax({
+							url: 'http://localhost/skordigital/juritgr/api.php',
+							data: {
+								'a': 'get_data_view_tunggal'
+							},
+							type: "GET",
+							success: function(obj) {
+								$('#jadwaltunggal').html(obj);
+
+								console.log('Request ... Done');
+							}
+						});
+					}, 10000);
+				}, 5000);
 			</script>
 		</div>
 	</div>
+
+	<?php
+	for ($i = 1; $i <= count($datpertandingn); $i++) {
+		if (($i) % 2 == 0) { ?>
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal<?= $i ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Detail pertandingan</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<dov class="row">
+								<div class="col-sm-6">
+									<td>
+										<table width="343" height="28" border="0">
+											<tbody>
+												<tr>
+													<th width="52" bgcolor="#663399" scope="row">
+														<div align="middle"><img src="ipsi.png" align="middle" width="42" height="40"></div>
+													</th>
+													<td width="281" bgcolor="#663399"><strong>
+															<font size="3" color="#FFFF00">PENCAK SILAT TUNGGAL</font>
+														</strong></td>
+												</tr>
+											</tbody>
+										</table>
+										<table width="343" height="28" border="0">
+											<tbody>
+												<tr>
+													<th width="50" scope="row"><img src="logotgr.png" width="50" height="38" align="middle"></th>
+													<td width="283" bgcolor="#996699"><strong>
+															<font size="2" color="#FFFFFF">
+
+																<?= $datpertandingn[$i - 2]["nama"] ?>
+
+															</font>
+														</strong></td>
+												</tr>
+											</tbody>
+										</table>
+										<div align="center">TOTAL SCORE<br>
+											<table width="138" border="0">
+												<tbody>
+													<tr>
+														<td height="79">
+															<div align="center" style="background-color:#FFFF00"><strong>
+																	<font size="10">
+
+																		<?= number_format($datpertandingn[$i - 2]["totalNilai"], 2) ?>
+
+																	</font>
+																</strong></div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</td>
+								</div>
+
+								<div class="col-sm-6">
+									<td>
+										<table width="343" height="28" border="0">
+											<tbody>
+												<tr>
+													<th width="52" bgcolor="#663399" scope="row">
+														<div align="middle"><img src="ipsi.png" align="middle" width="42" height="40"></div>
+													</th>
+													<td width="281" bgcolor="#663399"><strong>
+															<font size="3" color="#FFFF00">PENCAK SILAT TUNGGAL</font>
+														</strong></td>
+												</tr>
+											</tbody>
+										</table>
+										<table width="343" height="28" border="0">
+											<tbody>
+												<tr>
+													<th width="50" scope="row"><img src="logotgr.png" width="50" height="38" align="middle"></th>
+													<td width="283" bgcolor="#996699"><strong>
+															<font size="2" color="#FFFFFF">
+
+																<?= $datpertandingn[$i - 1]["nama"] ?>
+
+															</font>
+														</strong></td>
+												</tr>
+											</tbody>
+										</table>
+										<div align="center">TOTAL SCORE<br>
+											<table width="138" border="0">
+												<tbody>
+													<tr>
+														<td height="79">
+															<div align="center" style="background-color:#FFFF00"><strong>
+																	<font size="10">
+																		<?= number_format($datpertandingn[$i - 1]["totalNilai"], 2) ?>
+																	</font>
+																</strong></div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</td>
+								</div>
+							</dov>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	<?php
+		}
+	}
+	?>
+
+
 </body>
 
 </html>
