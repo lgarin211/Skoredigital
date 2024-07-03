@@ -240,7 +240,7 @@ $iter = 0;
 	for ($i = 1; $i <= count($datpertandingn); $i++) { ?>
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal<?= $i - 1 ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
+			<div class="modal-dialog modal-lg" style="transform: scale(1.5);margin-top: 30dvh;">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">Detail pertandingan</h5>
