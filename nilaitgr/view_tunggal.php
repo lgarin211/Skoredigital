@@ -153,7 +153,7 @@ $datpertandingn = [];
 						$datpertandingn[$iterasi]["totalNilai"] = $totalNilai;
 						$iterasi++;
 						?>
-						<td class="" data-toggle="modal" data-target="#exampleModal<?= $i % 2 + 2 ?>">
+						<td class="" data-toggle="modal" data-target="#exampleModal<?= $i ?>">
 							<table width="343" height="28" border="0">
 								<tr>
 									<th width="52" bgcolor="#663399" scope="row">
@@ -234,19 +234,68 @@ $datpertandingn = [];
 
 	<?php
 	for ($i = 1; $i <= count($datpertandingn); $i++) {
-		if (($i) % 2 == 0) { ?>
-			<!-- Modal -->
-			<div class="modal fade" id="exampleModal<?= $i ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Detail pertandingan</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<dov class="row">
+	?>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal<?= $i ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Detail pertandingan</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<dov class="row">
+							<div class="col-sm-6">
+								<td>
+									<table width="343" height="28" border="0">
+										<tbody>
+											<tr>
+												<th width="52" bgcolor="#663399" scope="row">
+													<div align="middle"><img src="ipsi.png" align="middle" width="42" height="40"></div>
+												</th>
+												<td width="281" bgcolor="#663399"><strong>
+														<font size="3" color="#FFFF00">PENCAK SILAT TUNGGAL</font>
+													</strong></td>
+											</tr>
+										</tbody>
+									</table>
+									<table width="343" height="28" border="0">
+										<tbody>
+											<tr>
+												<th width="50" scope="row"><img src="logotgr.png" width="50" height="38" align="middle"></th>
+												<td width="283" bgcolor="#996699"><strong>
+														<font size="2" color="#FFFFFF">
+
+															<?= $datpertandingn[$i - 1]["nama"] ?>
+
+														</font>
+													</strong></td>
+											</tr>
+										</tbody>
+									</table>
+									<div align="center">TOTAL SCORE<br>
+										<table width="138" border="0">
+											<tbody>
+												<tr>
+													<td height="79">
+														<div align="center" style="background-color:#FFFF00"><strong>
+																<font size="10">
+
+																	<?= number_format($datpertandingn[$i - 1]["totalNilai"], 2) ?>
+
+																</font>
+															</strong></div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</div>
+
+							<?php if ($i != count($datpertandingn)) { ?>
 								<div class="col-sm-6">
 									<td>
 										<table width="343" height="28" border="0">
@@ -268,7 +317,7 @@ $datpertandingn = [];
 													<td width="283" bgcolor="#996699"><strong>
 															<font size="2" color="#FFFFFF">
 
-																<?= $datpertandingn[$i - 2]["nama"] ?>
+																<?= $datpertandingn[$i]["nama"] ?>
 
 															</font>
 														</strong></td>
@@ -282,9 +331,7 @@ $datpertandingn = [];
 														<td height="79">
 															<div align="center" style="background-color:#FFFF00"><strong>
 																	<font size="10">
-
-																		<?= number_format($datpertandingn[$i - 2]["totalNilai"], 2) ?>
-
+																		<?= number_format($datpertandingn[$i]["totalNilai"], 2) ?>
 																	</font>
 																</strong></div>
 														</td>
@@ -294,62 +341,16 @@ $datpertandingn = [];
 										</div>
 									</td>
 								</div>
-
-								<div class="col-sm-6">
-									<td>
-										<table width="343" height="28" border="0">
-											<tbody>
-												<tr>
-													<th width="52" bgcolor="#663399" scope="row">
-														<div align="middle"><img src="ipsi.png" align="middle" width="42" height="40"></div>
-													</th>
-													<td width="281" bgcolor="#663399"><strong>
-															<font size="3" color="#FFFF00">PENCAK SILAT TUNGGAL</font>
-														</strong></td>
-												</tr>
-											</tbody>
-										</table>
-										<table width="343" height="28" border="0">
-											<tbody>
-												<tr>
-													<th width="50" scope="row"><img src="logotgr.png" width="50" height="38" align="middle"></th>
-													<td width="283" bgcolor="#996699"><strong>
-															<font size="2" color="#FFFFFF">
-
-																<?= $datpertandingn[$i - 1]["nama"] ?>
-
-															</font>
-														</strong></td>
-												</tr>
-											</tbody>
-										</table>
-										<div align="center">TOTAL SCORE<br>
-											<table width="138" border="0">
-												<tbody>
-													<tr>
-														<td height="79">
-															<div align="center" style="background-color:#FFFF00"><strong>
-																	<font size="10">
-																		<?= number_format($datpertandingn[$i - 1]["totalNilai"], 2) ?>
-																	</font>
-																</strong></div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</td>
-								</div>
-							</dov>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>
+							<?php } ?>
+						</dov>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
+		</div>
 	<?php
-		}
 	}
 	?>
 
