@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -6,9 +5,11 @@
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
 
     <link rel='stylesheet prefetch' href='bootstrap/dist/css/bootstrap.min.css'>
     <link rel="stylesheet" href="login-assets/css/style.css">
@@ -19,7 +20,7 @@
 <body>
     <div class="app">
         <div class="wrapper" style="overflow-x: scroll;">
-            <form class="form-signin" style="max-width: 100%;">       
+            <form class="form-signin" style="max-width: 100%;">
                 <a class="btn btn-lg btn-primary btn-block" id="btn-selesai">Selesai</a>
                 <br />
                 <table style="width: 100%;" class="table table-bordered">
@@ -31,11 +32,11 @@
                     <tr>
                         <th class="kontingen_merah" style="text-align: center;">Kontingen 1</th>
                         <th class="nama_juri" style="text-align: center;"></th>
-                        <th class="kontingen_biru" style="text-align: center;"  colspan="2" >Kontingen 2</th>
+                        <th class="kontingen_biru" style="text-align: center;" colspan="2">Kontingen 2</th>
                     </tr>
                     <tr>
                         <th rowspan="3" style="overflow-y: auto;">
-                            <div  style="overflow-y: auto;height: 200px;">
+                            <div style="overflow-y: auto;height: 200px;">
                                 <table class="table history-merah">
                                     <thead>
                                         <tr>
@@ -49,9 +50,10 @@
                                 </table>
                             </div>
                         </th>
-                        <th style="text-align: center;"><span class="btn btn-default button-babak1" onClick="history_babak(1)"><strong>BABAK I</strong></span></th>
+                        <th style="text-align: center;"><span class="btn btn-default button-babak1"
+                                onClick="history_babak(1)"><strong>BABAK I</strong></span></th>
                         <th colspan="2" rowspan="3">
-                            <div  style="overflow-y: auto;height: 200px;">
+                            <div style="overflow-y: auto;height: 200px;">
                                 <table class="table history-biru">
                                     <thead>
                                         <tr>
@@ -67,10 +69,12 @@
                         </th>
                     </tr>
                     <tr>
-                        <th style="text-align: center;"><span class="btn btn-default button-babak2" onClick="history_babak(2)"><strong>BABAK II</strong></span></th>
+                        <th style="text-align: center;"><span class="btn btn-default button-babak2"
+                                onClick="history_babak(2)"><strong>BABAK II</strong></span></th>
                     </tr>
                     <tr>
-                        <th style="text-align: center;"><span class="btn btn-default button-babak3" onClick="history_babak(3)"><strong>BABAK III</strong></span></th>
+                        <th style="text-align: center;"><span class="btn btn-default button-babak3"
+                                onClick="history_babak(3)"><strong>BABAK III</strong></span></th>
                     </tr>
                     <tr>
                         <th style="text-align: center;">Total : <strong class="total_merah"></strong></th>
@@ -79,68 +83,82 @@
                     </tr>
                     <tr>
                         <td>
-                        	<table style="width: 100%;text-align: center;">
-                        		<tr>
-                            		<td><span class="btn btn-danger" onClick="button_nilai('1','MERAH')">1</span></td>
-                            		<td><span class="btn btn-danger" style="padding-left: 20px;padding-right: 20px;" onClick="button_nilai('1+1','MERAH')">1+1</span></td>
-                            		<td><span class="btn btn-danger" style="padding-left: 25px;padding-right: 25px;" onClick="button_nilai('-1','MERAH')">-1</span></td>
-                            	</tr>
+                            <table style="width: 100%;text-align: center;">
+                                <tr>
+                                    <td><span class="btn btn-danger" onClick="button_nilai('1','MERAH')">1</span></td>
+                                    <td><span class="btn btn-danger" style="padding-left: 20px;padding-right: 20px;"
+                                            onClick="button_nilai('1+1','MERAH')">1+1</span></td>
+                                    <td><span class="btn btn-danger" style="padding-left: 25px;padding-right: 25px;"
+                                            onClick="button_nilai('-1','MERAH')">-1</span></td>
+                                </tr>
                             </table>
                         </td>
                         <td style="vertical-align: middle;">
-                            <span class="btn btn-danger button_minus10" style="padding-left: 25px;padding-right: 25px;" onClick="button_nilai('-10','MERAH')">-10</span>
+                            <span class="btn btn-danger button_minus10" style="padding-left: 25px;padding-right: 25px;"
+                                onClick="button_nilai('-10','MERAH')">-10</span>
                         </td>
                         <td>
-                        	<table style="width: 100%;text-align: center;">
-                        		<tr>
-                            		<td><span class="btn btn-blue" style="padding-left: 25px;padding-right: 25px;" onClick="button_nilai('-1','BIRU')">-1</span></td>
-                            		<td><span class="btn btn-blue" style="padding-left: 20px;padding-right: 20px;" onClick="button_nilai('1+1','BIRU')">1+1</span></td>
-                            		<td><span class="btn btn-blue" onClick="button_nilai('1','BIRU')">1</span></td>
-                            	</tr>
+                            <table style="width: 100%;text-align: center;">
+                                <tr>
+                                    <td><span class="btn btn-blue" style="padding-left: 25px;padding-right: 25px;"
+                                            onClick="button_nilai('-1','BIRU')">-1</span></td>
+                                    <td><span class="btn btn-blue" style="padding-left: 20px;padding-right: 20px;"
+                                            onClick="button_nilai('1+1','BIRU')">1+1</span></td>
+                                    <td><span class="btn btn-blue" onClick="button_nilai('1','BIRU')">1</span></td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                        	<table style="width: 100%;text-align: center;">
-                        		<tr>
-		                            <td><span class="btn btn-danger" onClick="button_nilai('2','MERAH')">2</span></td>
-		                            <td><span class="btn btn-danger" style="padding-left: 20px;padding-right: 20px;" onClick="button_nilai('1+2','MERAH')">1+2</span></td>
-		                            <td><span class="btn btn-danger" style="padding-left: 25px;padding-right: 25px;" onClick="button_nilai('-2','MERAH')">-2</span></td>
-		                        </tr>
-		                    </table>
+                            <table style="width: 100%;text-align: center;">
+                                <tr>
+                                    <td><span class="btn btn-danger" onClick="button_nilai('2','MERAH')">2</span></td>
+                                    <td><span class="btn btn-danger" style="padding-left: 20px;padding-right: 20px;"
+                                            onClick="button_nilai('1+2','MERAH')">1+2</span></td>
+                                    <td><span class="btn btn-danger" style="padding-left: 25px;padding-right: 25px;"
+                                            onClick="button_nilai('-2','MERAH')">-2</span></td>
+                                </tr>
+                            </table>
                         </td>
                         <td></td>
                         <td>
-                        	<table style="width: 100%;text-align: center;">
-                        		<tr>
-                            		<td><span class="btn btn-blue" style="padding-left: 25px;padding-right: 25px;" onClick="button_nilai('-2','BIRU')">-2</span></td>
-                            		<td><span class="btn btn-blue" style="padding-left: 20px;padding-right: 20px;" onClick="button_nilai('1+2','BIRU')">1+2</span></td>
-                            		<td><span class="btn btn-blue" onClick="button_nilai('2','BIRU')">2</span></td>
-                            	</tr>
+                            <table style="width: 100%;text-align: center;">
+                                <tr>
+                                    <td><span class="btn btn-blue" style="padding-left: 25px;padding-right: 25px;"
+                                            onClick="button_nilai('-2','BIRU')">-2</span></td>
+                                    <td><span class="btn btn-blue" style="padding-left: 20px;padding-right: 20px;"
+                                            onClick="button_nilai('1+2','BIRU')">1+2</span></td>
+                                    <td><span class="btn btn-blue" onClick="button_nilai('2','BIRU')">2</span></td>
+                                </tr>
                             </table>
                         </td>
-                        <tr>
+                    <tr>
                         <td>
-                        	<table style="width: 100%;text-align: center;">
-                        		<tr>
-                        			<td><span class="btn btn-danger" onClick="button_nilai('3','MERAH')">3</span></td>
-		                            <td><span class="btn btn-danger" style="padding-left: 20px;padding-right: 20px;" onClick="button_nilai('1+3','MERAH')">1+3</span></td>
-		                            <td><span class="btn btn-danger" style="padding-left: 25px;padding-right: 25px;" onClick="button_nilai('-5','MERAH')">-5</span></td>
-		                         </tr>
-		                    </table>
+                            <table style="width: 100%;text-align: center;">
+                                <tr>
+                                    <td><span class="btn btn-danger" onClick="button_nilai('3','MERAH')">3</span></td>
+                                    <td><span class="btn btn-danger" style="padding-left: 20px;padding-right: 20px;"
+                                            onClick="button_nilai('1+3','MERAH')">1+3</span></td>
+                                    <td><span class="btn btn-danger" style="padding-left: 25px;padding-right: 25px;"
+                                            onClick="button_nilai('-5','MERAH')">-5</span></td>
+                                </tr>
+                            </table>
                         </td>
                         <td>
-                            <span class="btn btn-blue button_minus10" style="padding-left: 25px;padding-right: 25px;" onClick="button_nilai('-10','BIRU')">-10</span>
+                            <span class="btn btn-blue button_minus10" style="padding-left: 25px;padding-right: 25px;"
+                                onClick="button_nilai('-10','BIRU')">-10</span>
                         </td>
                         <td>
-                        	<table style="width: 100%;text-align: center;">
-                        		<tr>
-                        			<td><span class="btn btn-blue" style="padding-left: 25px;padding-right: 25px;" onClick="button_nilai('-5','BIRU')">-5</span></td>
-                        			<td><span class="btn btn-blue" style="padding-left: 20px;padding-right: 20px;" onClick="button_nilai('1+3','BIRU')">1+3</span></td>
-                        			<td><span class="btn btn-blue" onClick="button_nilai('3','BIRU')">3</span></td>
-                        		</tr>
-                        	</table>
+                            <table style="width: 100%;text-align: center;">
+                                <tr>
+                                    <td><span class="btn btn-blue" style="padding-left: 25px;padding-right: 25px;"
+                                            onClick="button_nilai('-5','BIRU')">-5</span></td>
+                                    <td><span class="btn btn-blue" style="padding-left: 20px;padding-right: 20px;"
+                                            onClick="button_nilai('1+3','BIRU')">1+3</span></td>
+                                    <td><span class="btn btn-blue" onClick="button_nilai('3','BIRU')">3</span></td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     </tr>
@@ -149,39 +167,40 @@
         </div>
     </div>
     <style type="text/css">
-
-        .btn-danger, .btn-blue{
+        .btn-danger,
+        .btn-blue {
             border-radius: 50%;
             -moz-border-radius: 50%;
             -webkit-border-radius: 50%;
             padding: 20px 29px;
         }
 
-        .nm_merah, .kontingen_merah {
+        .nm_merah,
+        .kontingen_merah {
             background: #FF0000;
             color: white;
         }
 
-        .nm_biru, .kontingen_biru, .btn-blue {
+        .nm_biru,
+        .kontingen_biru,
+        .btn-blue {
             background: blue;
             color: white;
         }
 
-        .button-active, 
-        .button-active:focus, 
+        .button-active,
+        .button-active:focus,
         .button-active:active,
         .button-active:hover,
-        .button-active:visited
-        {
+        .button-active:visited {
             background: green;
             color: white;
         }
 
-        .btn-blue:focus, 
+        .btn-blue:focus,
         .btn-blue:active,
         .btn-blue:hover,
-        .btn-blue:visited
-        {
+        .btn-blue:visited {
             color: white;
         }
 
@@ -189,8 +208,8 @@
             display: flex;
             flex-direction: column;
             border-radius: 10px;
-            overflow:hidden;
-            height:1%;
+            overflow: hidden;
+            height: 1%;
         }
     </style>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -202,25 +221,24 @@
     </audio>
 
     <script type="text/javascript">
-            
+
         $(".my_audio").trigger('load');
-        
-        function play_audio(task)
-        {
+
+        function play_audio(task) {
             $(".my_audio").trigger('pause');
-            $(".my_audio").prop("currentTime",0);
+            $(".my_audio").prop("currentTime", 0);
 
             $(".my_audio").trigger('play');
-          
+
         }
 
-        var url_api = 'http://localhost/skordigital/nilai/api.php';
-        
-        var id_juri     = window.localStorage.getItem('juri');
-        var id_partai   = window.localStorage.getItem('partai'); 
+        var url_api = 'https://demoskoredigital.garinpoin.com/nilai/api.php';
+
+        var id_juri = window.localStorage.getItem('juri');
+        var id_partai = window.localStorage.getItem('partai');
         var babak_active = 0;
 
-        $('.nama_juri').html( window.localStorage.getItem('nama_juri') );
+        $('.nama_juri').html(window.localStorage.getItem('nama_juri'));
 
         var total_nilai_merah = 0;
         var total_button_merah = 0;
@@ -230,69 +248,64 @@
         var done_biru = 0;
         var done_merah = 0;
 
-		$('.btn-danger').each(function(){
-			$(this).vibrate();	
-		}); 
+        $('.btn-danger').each(function () {
+            $(this).vibrate();
+        });
 
-		$('.btn-blue').each(function(){
-			$(this).vibrate();	
-		})
+        $('.btn-blue').each(function () {
+            $(this).vibrate();
+        })
 
-        function button_nilai(button, sudut)
-        {    
+        function button_nilai(button, sudut) {
             play_audio('play');
 
-        	if(babak_active == 0)
-        	{
-        		alert('Babak harus dipilih');
+            if (babak_active == 0) {
+                alert('Babak harus dipilih');
 
-        		return false;
-        	}
+                return false;
+            }
 
             var nilai = 0;
 
-            switch(button)
-            {
+            switch (button) {
                 case '1':
                     nilai = 1;
-                break;
+                    break;
                 case '2':
                     nilai = 2;
-                break;
+                    break;
                 case '3':
                     nilai = 3;
-                break;
+                    break;
                 case '1+1':
                     nilai = 2;
-                break;
+                    break;
                 case '1+2':
                     nilai = 3;
-                break;
+                    break;
                 case '1+3':
                     nilai = 4;
-                break;
+                    break;
                 default:
                     nilai = button;
-                break;
+                    break;
             }
 
             // submit nilai
             $.ajax({
-                url: url_api+"?a=submit_skor", 
-                data : {'id_jadwal': id_partai, 'id_juri': id_juri,'button': button,'nilai': nilai,'sudut': sudut,'babak': babak_active},
+                url: url_api + "?a=submit_skor",
+                data: { 'id_jadwal': id_partai, 'id_juri': id_juri, 'button': button, 'nilai': nilai, 'sudut': sudut, 'babak': babak_active },
                 type: "POST",
                 dataType: "json",
                 crossDomain: true,
-                success: function(obj){
-                    if(obj.message =='success'){
-                     
-                        if(sudut == "MERAH")
-                        {
+                success: function (obj) {
+                    if (obj.message == 'success') {
+
+                        if (sudut == "MERAH") {
                             total_nilai_merah += parseInt(nilai);
                             $('.total_merah').html(total_nilai_merah);
                         }
-                        else
-                        {
+                        else {
                             total_nilai_biru += parseInt(nilai);
                             $('.total_biru').html(total_nilai_biru);
                         }
@@ -303,19 +316,19 @@
                         alert('Nilai gagal di sumbmit, silahkan di coba kembali.');
                 }
             });
-            
+
         }
 
-        $(function(){
+        $(function () {
             // get juri
             $.ajax({
-                url: url_api, 
+                url: url_api,
                 //data : {a : 'jadwal', 'id_partai' : window.sessionStorage.getItem('partai') },
-                data : {a : 'jadwal', 'id_partai' : id_partai },
+                data: { a: 'jadwal', 'id_partai': id_partai },
                 type: "GET",
                 dataType: "json",
                 crossDomain: true,
-                success: function(obj){
+                success: function (obj) {
 
                     $('.nm_merah').html(obj.nm_merah);
                     $('.nm_biru').html(obj.nm_biru);
@@ -326,26 +339,26 @@
             });
 
             // muncul semua babak
-            var semua_babak = [1,2,3]
-            
-            $(semua_babak).each(function(key_parent, v){
+            var semua_babak = [1, 2, 3]
+
+            $(semua_babak).each(function (key_parent, v) {
 
                 // get history sudut biru
                 $.ajax({
-                    url: url_api, 
-                    data : {a : 'history', 'id_juri' : id_juri, 'id_jadwal' : id_partai, 'sudut': 'BIRU','babak': v },
+                    url: url_api,
+                    data: { a: 'history', 'id_juri': id_juri, 'id_jadwal': id_partai, 'sudut': 'BIRU', 'babak': v },
                     type: "GET",
                     dataType: "json",
                     crossDomain: true,
-                    success: function(obj){
+                    success: function (obj) {
 
                         var html_ = "";
 
-                        $(obj).each(function(key, value){
-                            html_ += "<tr class=\"tr-"+ value.id_nilai +"\"><td>"+(key+1)+"</td><td>"+ value.button +"</td><td>"+ value.nilai +"</td><td><span class=\"btn btn-default btn-xs\" onclick=\"hapus_nilai("+ value.id_nilai +", "+ value.nilai +", 'BIRU')\">HAPUS</span></td></tr>";
+                        $(obj).each(function (key, value) {
+                            html_ += "<tr class=\"tr-" + value.id_nilai + "\"><td>" + (key + 1) + "</td><td>" + value.button + "</td><td>" + value.nilai + "</td><td><span class=\"btn btn-default btn-xs\" onclick=\"hapus_nilai(" + value.id_nilai + ", " + value.nilai + ", 'BIRU')\">HAPUS</span></td></tr>";
 
                             total_nilai_biru += parseInt(value.nilai);
-                        }); 
+                        });
 
                         $('.history-biru tbody').append(html_);
 
@@ -355,17 +368,17 @@
 
                 // get history sudut merah
                 $.ajax({
-                    url: url_api, 
-                    data : {a : 'history', 'id_juri' : id_juri, 'id_jadwal' : id_partai, 'sudut': 'MERAH','babak': v },
+                    url: url_api,
+                    data: { a: 'history', 'id_juri': id_juri, 'id_jadwal': id_partai, 'sudut': 'MERAH', 'babak': v },
                     type: "GET",
                     dataType: "json",
                     crossDomain: true,
-                    success: function(obj){
+                    success: function (obj) {
 
                         var html_ = "";
 
-                        $(obj).each(function(key, value){
-                            html_ += "<tr class=\"tr-"+ value.id_nilai +"\"><td>"+(key+1)+"</td><td>"+ value.button +"</td><td>"+ value.nilai +"</td><td><span class=\"btn  btn-default btn-xs\"  onclick=\"hapus_nilai("+ value.id_nilai +", "+ value.nilai +",'MERAH')\">HAPUS</span></td></tr>";
+                        $(obj).each(function (key, value) {
+                            html_ += "<tr class=\"tr-" + value.id_nilai + "\"><td>" + (key + 1) + "</td><td>" + value.button + "</td><td>" + value.nilai + "</td><td><span class=\"btn  btn-default btn-xs\"  onclick=\"hapus_nilai(" + value.id_nilai + ", " + value.nilai + ",'MERAH')\">HAPUS</span></td></tr>";
 
                             total_nilai_merah += parseInt(value.nilai);
 
@@ -380,47 +393,44 @@
                 });
             });
 
-            setInterval(function(){
+            setInterval(function () {
 
-                if(done_merah == 1 && done_biru==1)
-                {
+                if (done_merah == 1 && done_biru == 1) {
                     $('.total_biru').html(total_nilai_biru);
                     $('.total_merah').html(total_nilai_merah);
                     done_merah = 0;
-                    done_biru=0;
+                    done_biru = 0;
                 }
 
             }, 500);
 
         });
 
-        function hapus_nilai(id_n, total_, jenis)
-        {
-            if(confirm('Hapus nilai pertandingan ini?'))
-            {
+        function hapus_nilai(id_n, total_, jenis) {
+            if (confirm('Hapus nilai pertandingan ini?')) {
                 // get history sudut biru
                 $.ajax({
-                    url: url_api, 
-                    data : {a : 'delete_nilai', 'id_nilai' : id_n},
+                    url: url_api,
+                    data: { a: 'delete_nilai', 'id_nilai': id_n },
                     type: "GET",
                     dataType: "json",
                     crossDomain: true,
-                    success: function(obj){
-                        if(obj.status == 'success'){
-                            
-                            $('tr.tr-'+id_n).remove();
+                    success: function (obj) {
+                        if (obj.status == 'success') {
 
-                            if(jenis == "BIRU"){
+                            $('tr.tr-' + id_n).remove();
+
+                            if (jenis == "BIRU") {
                                 total_nilai_biru -= total_;
 
                                 $('.total_biru').html(total_nilai_biru);
-                            }else{
+                            } else {
                                 total_nilai_merah -= total_;
 
                                 $('.total_merah').html(total_nilai_merah);
                             }
 
-                        }else{
+                        } else {
                             alert('Nilai gagal di hapus silahkan di cek kembali.');
                         }
                     }
@@ -428,27 +438,26 @@
             }
         }
 
-        function history_babak(babak)
-        {
+        function history_babak(babak) {
             $('.button-babak2, .button-babak1, .button-babak3').removeClass('button-active');
 
-            $('.button-babak'+babak).addClass('button-active');
+            $('.button-babak' + babak).addClass('button-active');
 
-           babak_active = babak;
+            babak_active = babak;
 
             // get history sudut biru
             $.ajax({
-                url: url_api, 
-                data : {a : 'history', 'id_juri' : id_juri, 'id_jadwal' : id_partai, 'sudut': 'BIRU','babak': babak },
+                url: url_api,
+                data: { a: 'history', 'id_juri': id_juri, 'id_jadwal': id_partai, 'sudut': 'BIRU', 'babak': babak },
                 type: "GET",
                 dataType: "json",
                 crossDomain: true,
-                success: function(obj){
+                success: function (obj) {
 
                     var html_ = "";
 
-                    $(obj).each(function(key, value){
-                        html_ += "<tr class=\"tr-"+ value.id_nilai +"\"><td>"+(key+1)+"</td><td>"+ value.button +"</td><td>"+ value.nilai +"</td><td><span class=\"btn btn-default btn-xs\" onclick=\"hapus_nilai("+ value.id_nilai +","+ value.nilai +" ,'BIRU')\">HAPUS</span></td></tr>";
+                    $(obj).each(function (key, value) {
+                        html_ += "<tr class=\"tr-" + value.id_nilai + "\"><td>" + (key + 1) + "</td><td>" + value.button + "</td><td>" + value.nilai + "</td><td><span class=\"btn btn-default btn-xs\" onclick=\"hapus_nilai(" + value.id_nilai + "," + value.nilai + " ,'BIRU')\">HAPUS</span></td></tr>";
                     });
                     $('.history-biru tbody').html(html_);
                 }
@@ -456,18 +465,18 @@
 
             // get history sudut merah
             $.ajax({
-                url: url_api, 
-                data : {a : 'history', 'id_juri' : id_juri, 'id_jadwal' : id_partai, 'sudut': 'MERAH','babak': babak },
+                url: url_api,
+                data: { a: 'history', 'id_juri': id_juri, 'id_jadwal': id_partai, 'sudut': 'MERAH', 'babak': babak },
                 type: "GET",
                 dataType: "json",
                 crossDomain: true,
-                success: function(obj){
+                success: function (obj) {
 
                     var html_ = "";
 
-                    $(obj).each(function(key, value){
-                        html_ += "<tr class=\"tr-"+ value.id_nilai +"\"><td>"+(key+1)+"</td><td>"+ value.button +"</td><td>"+ value.nilai +"</td><td><span class=\"btn btn-default btn-xs\" onclick=\"hapus_nilai("+ value.id_nilai +", "+ value.nilai +", 'MERAH')\">HAPUS</span></td></tr>";
-                    
+                    $(obj).each(function (key, value) {
+                        html_ += "<tr class=\"tr-" + value.id_nilai + "\"><td>" + (key + 1) + "</td><td>" + value.button + "</td><td>" + value.nilai + "</td><td><span class=\"btn btn-default btn-xs\" onclick=\"hapus_nilai(" + value.id_nilai + ", " + value.nilai + ", 'MERAH')\">HAPUS</span></td></tr>";
+
                     });
 
                     $('.history-merah tbody').html(html_);
@@ -475,13 +484,14 @@
             });
         }
 
-        $("#btn-selesai").click(function(){
+        $("#btn-selesai").click(function () {
 
-            if(confirm("Logout system ?")){
-                window.location.replace('index.html');    
+            if (confirm("Logout system ?")) {
+                window.location.replace('index.html');
             }
 
         });
     </script>
 </body>
+
 </html>

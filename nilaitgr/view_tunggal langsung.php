@@ -176,7 +176,7 @@ include "../backend/includes/connection.php";
 			<script type="text/javascript">
 				setInterval(function() {
 					$.ajax({
-						url: 'http://localhost/skordigital/juritgr/api.php',
+						url: 'https://demoskoredigital.garinpoin.com/juritgr/api.php',
 						data: {
 							'a': 'get_data_view_tunggal'
 						},
