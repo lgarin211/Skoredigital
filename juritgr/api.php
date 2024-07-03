@@ -667,72 +667,72 @@ if ("" != $param) {
 			if ($row) {
 				switch ($jurus) {
 					case 1:
-						$sql = "UPDATE nilai_tunggal set jurus1=" . ($row[3] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus1=" . ($row[3] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 2:
-						$sql = "UPDATE nilai_tunggal set jurus2=" . ($row[4] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus2=" . ($row[4] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 3:
-						$sql = "UPDATE nilai_tunggal set jurus3=" . ($row[5] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus3=" . ($row[5] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 4:
-						$sql = "UPDATE nilai_tunggal set jurus4=" . ($row[6] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus4=" . ($row[6] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 5:
-						$sql = "UPDATE nilai_tunggal set jurus5=" . ($row[7] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus5=" . ($row[7] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 6:
-						$sql = "UPDATE nilai_tunggal set jurus6=" . ($row[8] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus6=" . ($row[8] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 7:
-						$sql = "UPDATE nilai_tunggal set jurus7=" . ($row[9] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus7=" . ($row[9] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 8:
-						$sql = "UPDATE nilai_tunggal set jurus8=" . ($row[10] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus8=" . ($row[10] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 9:
-						$sql = "UPDATE nilai_tunggal set jurus9=" . ($row[11] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus9=" . ($row[11] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 10:
-						$sql = "UPDATE nilai_tunggal set jurus10=" . ($row[12] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus10=" . ($row[12] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 11:
-						$sql = "UPDATE nilai_tunggal set jurus11=" . ($row[13] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus11=" . ($row[13] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 12:
-						$sql = "UPDATE nilai_tunggal set jurus12=" . ($row[14] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus12=" . ($row[14] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 13:
-						$sql = "UPDATE nilai_tunggal set jurus13=" . ($row[15] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus13=" . ($row[15] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 14:
-						$sql = "UPDATE nilai_tunggal set jurus14=" . ($row[16] + 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus14=" . ($row[16] + 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
@@ -761,72 +761,72 @@ if ("" != $param) {
 			if ($row) {
 				switch ($jurus) {
 					case 1:
-						$sql = "UPDATE nilai_tunggal set jurus1=" . ($row[3] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus1=" . ($row[3] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 2:
-						$sql = "UPDATE nilai_tunggal set jurus2=" . ($row[4] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus2=" . ($row[4] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 3:
-						$sql = "UPDATE nilai_tunggal set jurus3=" . ($row[5] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus3=" . ($row[5] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 4:
-						$sql = "UPDATE nilai_tunggal set jurus4=" . ($row[6] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus4=" . ($row[6] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 5:
-						$sql = "UPDATE nilai_tunggal set jurus5=" . ($row[7] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus5=" . ($row[7] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 6:
-						$sql = "UPDATE nilai_tunggal set jurus6=" . ($row[8] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus6=" . ($row[8] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 7:
-						$sql = "UPDATE nilai_tunggal set jurus7=" . ($row[9] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus7=" . ($row[9] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 8:
-						$sql = "UPDATE nilai_tunggal set jurus8=" . ($row[10] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus8=" . ($row[10] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 9:
-						$sql = "UPDATE nilai_tunggal set jurus9=" . ($row[11] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus9=" . ($row[11] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 10:
-						$sql = "UPDATE nilai_tunggal set jurus10=" . ($row[12] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus10=" . ($row[12] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 11:
-						$sql = "UPDATE nilai_tunggal set jurus11=" . ($row[13] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus11=" . ($row[13] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 12:
-						$sql = "UPDATE nilai_tunggal set jurus12=" . ($row[14] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus12=" . ($row[14] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 13:
-						$sql = "UPDATE nilai_tunggal set jurus13=" . ($row[15] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus13=" . ($row[15] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
 					case 14:
-						$sql = "UPDATE nilai_tunggal set jurus14=" . ($row[16] - 1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
+						$sql = "UPDATE nilai_tunggal set jurus14=" . ($row[16] - 0.1) . " WHERE id_jadwal='{$id_jadwal}' and id_juri='{$id_juri}'";
 
 						$exec = mysqli_query($koneksi, $sql);
 						break;
