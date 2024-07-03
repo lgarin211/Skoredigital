@@ -141,16 +141,12 @@ $iter = 0;
 
 							<?php
 							// new logic 
+							$alter = [];
+							$loter = 0;
 							for ($i = 1; $i <= 5; $i++) {
-								$avgKB += $array_nilai[$i]['kebenaran'];
-								$avgKM += $array_nilai[$i]['kemantapan'];
-								$avgHukuman += $array_nilai[$i]['hukuman'];
+								$loter += $alter[$i] = $array_nilai[$i]['kebenaran'] + $array_nilai[$i]['kemantapan'] - $array_nilai[$i]['hukuman'];
 							}
-							$avgKB = $avgKB / 5;
-							$avgKM = $avgKM / 5;
-							$avgHukuman = $avgHukuman / 5;
-
-							$totalNilai = ($avgKB + $avgKM) - $avgHukuman;
+							$totalNilai = ($loter - min($alter) - max($alter)) / 3;
 
 							$datpertandingn[$iterasi]["totalNilai"] = $totalNilai;
 							$iterasi++;
