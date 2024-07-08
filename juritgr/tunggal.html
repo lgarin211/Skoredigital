@@ -441,12 +441,12 @@
                     $('.hukuman_4').html(0.1 * obj.hukuman_4);
                     $('.hukuman_5').html(0.1 * obj.hukuman_5);
 
-                    var total_kemantapan = (((parseFloat(obj.total_minus) + parseFloat(obj.kemantapan))));
+                    var total_kemantapan = (parseFloat(obj.total_minus) + parseFloat(obj.kemantapan));
 
-                    if (total_kemantapan != "") {
+                    if (total_kemantapan != 0) {
                         total_kemantapan = 99 + total_kemantapan;
                     } else {
-                        total_kemantapan = 99;
+                        total_kemantapan = 0;
                     }
 
 
@@ -454,9 +454,20 @@
 
                     var total_nilai = total_kemantapan - (- (parseFloat(obj.hukuman_1) + parseFloat(obj.hukuman_2) + parseFloat(obj.hukuman_3) + parseFloat(obj.hukuman_4) + parseFloat(obj.hukuman_5)));
 
-                    $('.kalkulasi_kemantapan').html((0.1 * total_kemantapan).toFixed(2));
+                    alert(total_kemantapan);
+
+                    if (parseFloat((Math.abs(obj.total_minus) + Math.abs(obj.kemantapan)).toFixed(2)) != 0) {
+                        $('.kalkulasi_kemantapan').html((0.1 * total_kemantapan).toFixed(2));
+                    } else {
+                        $('.kalkulasi_kemantapan').html(0);
+                    }
+
                     $('.total_hukuman').html(total_hukuman);
-                    $('.total_nilai').html((0.1 * total_nilai).toFixed(2));
+                    if (total_nilai != 9.0) {
+                        $('.total_nilai').html((0.1 * total_nilai).toFixed(2));
+                    } else {
+                        $('.total_nilai').html(0);
+                    }
 
                     $('.nilai_1').val(obj.jurus_1);
                     $('.nilai_2').val(obj.jurus_2);

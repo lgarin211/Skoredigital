@@ -128,9 +128,25 @@ function givesolution()
                     for ($i = 1; $i <= 5; $i++) {
                         $loter += $alter[$i] = $array_nilai[$i]['kebenaran'] + $array_nilai[$i]['kemantapan'] - $array_nilai[$i]['hukuman'];
                     }
-                    $totalNilai = ($loter - min($alter) - max($alter)) / 3;
+                    $tempNilai = $alter;
+                    $tempNilai = array_filter($tempNilai, function ($value) {
+                        return $value != 0;
+                    });
+                    if (empty($tempNilai)) {
+                        $tempNilai = [0];
+                    }
+                    $alter = $tempNilai;
+                    $dalisat = count($alter);
+
+                    if ($dalisat == 4) {
+                        $dalisat -= 2;
+                    } else {
+                        $dalisat -= 2;
+                    }
+
+                    $totalNilai = ($loter - min($alter) - max($alter)) / $dalisat;
                     $datpertandingn[$iterasi]["totalNilai"] = $totalNilai;
-                    // $iterasi++;
+                    $iterasi++;
                     ?>
                     <td class="" data-toggle="modal" data-target="#exampleModal<?= $iter++ ?>">
                         <table width="343" height="28" border="0">

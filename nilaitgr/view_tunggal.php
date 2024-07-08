@@ -104,7 +104,6 @@ include "../backend/includes/connection.php";
 									$kemantapan = mysqli_query($koneksi, "SELECT kemantapan FROM nilai_tunggal WHERE id_juri=" . $juri['id_juri'] . " AND id_jadwal=" . $jadwal['id_partai']);
 									$row = mysqli_fetch_row($kemantapan);
 									$kemantapan = $row[0] * 0.1;
-									// var_dump($kemantapan);
 									$array_nilai[$juri['id_juri']]['kemantapan'] = $kemantapan;
 								?>
 									<?= $juri[1] ?> : <?= empty($kemantapan) ? 0 : $kemantapan ?><br />
@@ -153,7 +152,23 @@ include "../backend/includes/connection.php";
 							for ($i = 1; $i <= 5; $i++) {
 								$loter += $alter[$i] = $array_nilai[$i]['kebenaran'] + $array_nilai[$i]['kemantapan'] - $array_nilai[$i]['hukuman'];
 							}
-							$totalNilai = ($loter - min($alter) - max($alter)) / 3;
+							$tempNilai = $alter;
+							$tempNilai = array_filter($tempNilai, function ($value) {
+								return $value != 0;
+							});
+							if (empty($tempNilai)) {
+								$tempNilai = [0];
+							}
+							$alter = $tempNilai;
+							$dalisat = count($alter);
+
+							if ($dalisat == 4) {
+								$dalisat -= 2;
+							} else {
+								$dalisat -= 2;
+							}
+
+							$totalNilai = ($loter - min($alter) - max($alter)) / $dalisat;
 							$datpertandingn[$iterasi]["totalNilai"] = $totalNilai;
 							$iterasi++;
 							?>
@@ -177,6 +192,14 @@ include "../backend/includes/connection.php";
 									</tr>
 								</table>
 								<div align="center">TOTAL SCORE<br>
+									<?php
+									$tempNilai2 = array_filter($tempNilai, function ($value) {
+										return $value != 0;
+									});
+									if (empty($tempNilai2)) {
+										$tempNilai2 = [0];
+									}
+									?>
 									<table width="138" border="0">
 										<tr>
 											<td height="79">
@@ -188,9 +211,8 @@ include "../backend/includes/connection.php";
 											</td>
 										</tr>
 									</table>
-
 									MIN :
-									<?= min($tempNilai) ?>
+									<?= min($tempNilai2) ?>
 
 									MAX :
 									<?= max($tempNilai) ?>
