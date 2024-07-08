@@ -454,8 +454,6 @@
 
                     var total_nilai = total_kemantapan - (- (parseFloat(obj.hukuman_1) + parseFloat(obj.hukuman_2) + parseFloat(obj.hukuman_3) + parseFloat(obj.hukuman_4) + parseFloat(obj.hukuman_5)));
 
-                    alert(total_kemantapan);
-
                     if (parseFloat((Math.abs(obj.total_minus) + Math.abs(obj.kemantapan)).toFixed(2)) != 0) {
                         $('.kalkulasi_kemantapan').html((0.1 * total_kemantapan).toFixed(2));
                     } else {
