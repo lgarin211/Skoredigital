@@ -204,7 +204,9 @@ include "../backend/includes/connection.php";
 											<td height="79">
 												<div align="center" style="background-color:#FFFF00"><strong>
 														<font size="10">
-															<?= number_format($totalNilai, 2) ?>
+															<span id="toss<?= $iterasi++ ?>">
+																<?= number_format($totalNilai, 2) ?>
+															</span>
 														</font>
 													</strong></div>
 											</td>
@@ -376,18 +378,20 @@ include "../backend/includes/connection.php";
 				}
 			});
 
-			setTimeout(() => {
-				var letbest = <?= $iter ?>;
-				for (let i = 0; i < letbest; i++) {
-					var ivi = document.getElementsByClassName('spcd' + i);
-					for (let j = 0; j < ivi.length; j++) {
-						ivi[j].innerHTML = document.getElementById('toss' + i).innerHTML;
-					}
-
-				}
-				console.log("reviewed")
-			}, 2000);
 		}, 2000);
+
+		setInterval(() => {
+			var letbest = <?= $iter ?>;
+			console.log('latter' + letbest)
+			for (let i = 0; i < letbest; i++) {
+				var ivi = document.getElementsByClassName('spcd' + i);
+				for (let j = 0; j < ivi.length; j++) {
+					ivi[j].innerHTML = 'AAAA';
+					console.log(document.getElementById('toss' + i).innerText);
+				}
+			}
+			console.log("reviewed")
+		}, 1000);
 	</script>
 </body>
 

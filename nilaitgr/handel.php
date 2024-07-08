@@ -172,8 +172,10 @@ function givesolution()
                                 <tr>
                                     <td height="79">
                                         <div align="center" style="background-color:#FFFF00"><strong>
-                                                <font size="10" id="toss<?= $iterasi++ ?>">
-                                                    <?= number_format($totalNilai, 2) ?>
+                                                <font size="10">
+                                                    <span id="toss<?= $iterasi++ ?>">
+                                                        <?= number_format($totalNilai, 2) ?>
+                                                    </span>
                                                 </font>
                                             </strong></div>
                                     </td>
