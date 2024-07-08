@@ -66,8 +66,6 @@ include "../backend/includes/connection.php";
 				<?php while ($jadwal = mysqli_fetch_array($jadwal_tunggal)) {
 					try { ?>
 
-
-
 						<tr class="text-center">
 							<td><?php echo $jadwal['noundian']; ?></td>
 							<td><?php echo $jadwal['golongan']; ?></td>
@@ -150,12 +148,13 @@ include "../backend/includes/connection.php";
 							$alter = [];
 							$loter = 0;
 							for ($i = 1; $i <= 5; $i++) {
-								$loter += $alter[$i] = $array_nilai[$i]['kebenaran'] + $array_nilai[$i]['kemantapan'] - $array_nilai[$i]['hukuman'];
+								$loter += $alter[$i] = $array_nilai[$i]['kebenaran'] + $array_nilai[$i]['kemantapan'] + $array_nilai[$i]['hukuman'];
 							}
 							$tempNilai = $alter;
 							$tempNilai = array_filter($tempNilai, function ($value) {
 								return $value != 0;
 							});
+
 							if (empty($tempNilai)) {
 								$tempNilai = [0];
 							}
