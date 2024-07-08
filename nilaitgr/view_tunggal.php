@@ -386,7 +386,7 @@ include "../backend/includes/connection.php";
 
 				}
 				console.log("reviewed")
-			}, 1000);
+			}, 2000);
 		}, 2000);
 	</script>
 </body>
