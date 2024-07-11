@@ -40,9 +40,6 @@ function givesolution()
         ?>
         <?php while ($jadwal = mysqli_fetch_array($jadwal_tunggal)) {
             try { ?>
-
-
-
                 <tr class="text-center">
                     <td><?php echo $jadwal['noundian']; ?></td>
                     <td><?php echo $jadwal['golongan']; ?></td>
@@ -126,7 +123,7 @@ function givesolution()
                     $alter = [];
                     $loter = 0;
                     for ($i = 1; $i <= 5; $i++) {
-                        $loter += $alter[$i] = $array_nilai[$i]['kebenaran'] + $array_nilai[$i]['kemantapan'] - $array_nilai[$i]['hukuman'];
+                        $loter += $alter[$i] = $array_nilai[$i]['kebenaran'] + $array_nilai[$i]['kemantapan'] + $array_nilai[$i]['hukuman'];
                     }
                     $tempNilai = $alter;
                     $tempNilai = array_filter($tempNilai, function ($value) {
@@ -146,7 +143,7 @@ function givesolution()
 
                     $totalNilai = ($loter - min($alter) - max($alter)) / $dalisat;
                     $datpertandingn[$iterasi]["totalNilai"] = $totalNilai;
-                    $iterasi++;
+                    // $iterasi++;
                     ?>
                     <td class="" data-toggle="modal" data-target="#exampleModal<?= $iter++ ?>">
                         <table width="343" height="28" border="0">
@@ -173,7 +170,7 @@ function givesolution()
                                     <td height="79">
                                         <div align="center" style="background-color:#FFFF00"><strong>
                                                 <font size="10">
-                                                    <span id="toss<?= $iterasi++ ?>">
+                                                    <span id="toss<?= $iterasi ?>">
                                                         <?= number_format($totalNilai, 2) ?>
                                                     </span>
                                                 </font>
@@ -190,6 +187,7 @@ function givesolution()
                         </div>
                     </td>
                 </tr>
+                <?php $iterasi++ ?>
             <?php } catch (Exception $e) {
             } ?>
         <?php $no++;

@@ -66,8 +66,6 @@ include "../backend/includes/connection.php";
 				<?php while ($jadwal = mysqli_fetch_array($jadwal_tunggal)) {
 					try { ?>
 
-
-
 						<tr class="text-center">
 							<td><?php echo $jadwal['noundian']; ?></td>
 							<td><?php echo $jadwal['golongan']; ?></td>
@@ -156,6 +154,7 @@ include "../backend/includes/connection.php";
 							$tempNilai = array_filter($tempNilai, function ($value) {
 								return $value != 0;
 							});
+
 							if (empty($tempNilai)) {
 								$tempNilai = [0];
 							}
@@ -205,7 +204,9 @@ include "../backend/includes/connection.php";
 											<td height="79">
 												<div align="center" style="background-color:#FFFF00"><strong>
 														<font size="10">
-															<?= number_format($totalNilai, 2) ?>
+															<span id="toss<?= $iterasi++ ?>">
+																<?= number_format($totalNilai, 2) ?>
+															</span>
 														</font>
 													</strong></div>
 											</td>
@@ -377,22 +378,20 @@ include "../backend/includes/connection.php";
 				}
 			});
 
-			setTimeout(() => {
-				var letbest = <?= $iter ?>;
-				// console.log(letbest)
+		}, 2000);
 
-				for (let i = 1; i <= letbest; i++) {
-					var ivi = document.getElementsByClassName('spcd' + i);
-					console.log('cari spcd' + i + '... toss' + i)
-					console.log(ivi)
-					for (let j = 0; j < ivi.length; j++) {
-						ivi[j].innerHTML = document.getElementById('toss' + i).innerHTML;
-					}
-
+		setInterval(() => {
+			var letbest = <?= $iter ?>;
+			console.log('latter' + letbest)
+			for (let i = 0; i < letbest; i++) {
+				var ivi = document.getElementsByClassName('spcd' + i);
+				for (let j = 0; j < ivi.length; j++) {
+					ivi[j].innerHTML = 'AAAA';
+					console.log(document.getElementById('toss' + i).innerText);
 				}
-				console.log("reviewed")
-			}, 1000);
-		}, 5000);
+			}
+			console.log("reviewed")
+		}, 1000);
 	</script>
 </body>
 
